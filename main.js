@@ -2,10 +2,18 @@
 const { app, BrowserWindow } = require('electron');
 
 const createWindow = () => {
+
+  // We cannot require the screen module until the app is ready.
+  const { screen } = require('electron');
+
+  // Create a window that fills the screen's available work area.
+  const primaryDisplay = screen.getPrimaryDisplay();
+  const { width, height } = primaryDisplay.workAreaSize;
+
   // 创建浏览器窗口
   const win = new BrowserWindow({
-    width: 800,
-    height: 800,
+    width: width,
+    height: height,
   })
 
   // 加载开发环境url

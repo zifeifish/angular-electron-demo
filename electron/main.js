@@ -1,25 +1,23 @@
 // 控制应用生命周期和创建原生浏览器窗口的模组
 const { app, BrowserWindow } = require('electron');
+const NODE_ENV = process.env.NODE_ENV;
 
 const createWindow = () => {
 
-  // We cannot require the screen module until the app is ready.
-  const { screen } = require('electron');
-
-  // Create a window that fills the screen's available work area.
-  const primaryDisplay = screen.getPrimaryDisplay();
-  const { width, height } = primaryDisplay.workAreaSize;
-
   // 创建浏览器窗口
   const win = new BrowserWindow({
-    width: width,
-    height: height,
-  })
+    fullScreen: true,
+  });
+  win.maximize();
 
   // 加载开发环境url
   win.loadURL('http://localhost:4200');
-  // 打开开发者工具
-  win.webContents.openDevTools();
+
+  if (NODE_ENV === 'development') {
+    // 打开开发者工具
+    win.webContents.openDevTools();
+  }
+
 }
 
 // 这段程序将会在 Electron 结束初始化

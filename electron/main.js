@@ -1,21 +1,36 @@
 // 控制应用生命周期和创建原生浏览器窗口的模组
 const { app, BrowserWindow } = require('electron');
 const NODE_ENV = process.env.NODE_ENV;
+const path = require('path');
+const url = require('url');
 
 const createWindow = () => {
 
   // 创建浏览器窗口
   const win = new BrowserWindow({
-    fullScreen: true,
+    show: false
   });
+  // 界面最大化
   win.maximize();
-
-  // 加载开发环境url
-  win.loadURL('http://localhost:4200');
+  win.show();
 
   if (NODE_ENV === 'development') {
+    require('electron-reload')(__dirname, {
+      electron: require(path.join(__dirname, '/../node_modules/electron'))
+    });
+    // 加载开发环境url
+    win.loadURL('http://localhost:4200');
     // 打开开发者工具
     win.webContents.openDevTools();
+  } else {
+    const pathIndex = './dist/index.html'
+    const prodUrl = url.format({
+      pathname: path.join(__dirname, pathIndex),
+      protocol: 'file:',
+      slashes: true
+    })
+    // 加载生产环境url
+    win.loadURL(prodUrl);
   }
 
 }

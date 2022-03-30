@@ -1,0 +1,18 @@
+{
+  "productName": "hcyApp",
+  "copyright": "Copyright © 2022 zifeifish",
+  "directories": {
+    "output": "dist_electron"
+  },
+  "mac": {
+    "category": "public.app-category.utilities"
+  },
+  "nsis": {
+    "oneClick": false,
+    "allowToChangeInstallationDirectory": true
+  },
+  "files": [
+    "dist_web/**/*",
+    "electron/**/*"
+  ]
+}

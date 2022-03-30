@@ -23,7 +23,7 @@ const createWindow = () => {
     // 打开开发者工具
     win.webContents.openDevTools();
   } else {
-    const pathIndex = './dist/index.html'
+    const pathIndex = '../dist_web/index.html'
     const prodUrl = url.format({
       pathname: path.join(__dirname, pathIndex),
       protocol: 'file:',

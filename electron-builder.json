@@ -10,9 +10,19 @@
     "allowToChangeInstallationDirectory": true
   },
   "files": [
-    "dist_web/**/*",
-    "electron/**/*"
+    "**/*",
+    "!**/*.ts",
+    "!*.map",
+    "!package.json",
+    "!package-lock.json"
   ],
+  "extraResources": [{
+    "from": "dist_web",
+    "to": "app",
+    "filter": [
+      "**/*"
+    ]
+  }],
   "win": {
     "icon": "dist_web/assets/icons",
     "target": [

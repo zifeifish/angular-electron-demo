@@ -1,11 +1,9 @@
 {
+  "asar": false,
   "productName": "hcyApp",
   "copyright": "Copyright © 2022 zifeifish",
   "directories": {
     "output": "dist_electron"
-  },
-  "mac": {
-    "category": "public.app-category.utilities"
   },
   "nsis": {
     "oneClick": false,
@@ -14,5 +12,27 @@
   "files": [
     "dist_web/**/*",
     "electron/**/*"
-  ]
+  ],
+  "win": {
+    "icon": "dist_web/assets/icons",
+    "target": [
+      "portable"
+    ]
+  },
+  "portable": {
+    "splashImage": "dist_web/assets/icons/electron.bmp"
+  },
+  "mac": {
+    "category": "public.app-category.utilities",
+    "icon": "dist_web/assets/icons",
+    "target": [
+      "dmg"
+    ]
+  },
+  "linux": {
+    "icon": "dist_web/assets/icons",
+    "target": [
+      "AppImage"
+    ]
+  }
 }

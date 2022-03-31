@@ -12,6 +12,7 @@
     "web-build": "ng build --base-href ./",
     "electron-build": "electron-builder",
     "build": "npm run web-build && npm run electron-build",
+    "postinstall": "electron-builder install-app-deps",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
